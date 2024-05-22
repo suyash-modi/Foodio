@@ -46,7 +46,7 @@
             android:ems="10"
             android:background="@android:color/transparent"
             android:inputType="text"
-            android:text="Name"
+            android:hint="Name"
             android:textColor="@android:color/darker_gray" />
     </LinearLayout>
 
@@ -81,7 +81,7 @@
             android:inputType="textMultiLine"
             android:background="@android:color/transparent"
 
-            android:text="Lorem ipsum is placeholder text
+            android:hint="Lorem ipsum is placeholder text
 commonly used in the graphic,
 print, and publishing industries
 for previewing layouts and visua"
@@ -118,7 +118,7 @@ for previewing layouts and visua"
             android:inputType="text"
             android:background="@android:color/transparent"
 
-            android:text="Enter your Email"
+            android:hint="Enter your Email"
             android:textColor="@android:color/darker_gray" />
     </LinearLayout>
     <LinearLayout
@@ -150,7 +150,7 @@ for previewing layouts and visua"
             android:layout_weight="1"
             android:ems="10"
             android:inputType="text"
-            android:text="Enter your Phone no."
+            android:hint="Enter your Phone no."
             android:background="@android:color/transparent"
 
             android:textColor="@android:color/darker_gray" />

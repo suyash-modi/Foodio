@@ -70,7 +70,7 @@
         android:inputType="text"
         android:paddingLeft="15dp"
 
-        android:text="Email or Phone Number"
+        android:hint="Email or Phone Number"
         android:textColor="@android:color/darker_gray"
         app:layout_constraintEnd_toEndOf="@+id/textView7"
         app:layout_constraintStart_toStartOf="@+id/textView7"
@@ -88,7 +88,7 @@
         android:ems="10"
         android:inputType="text"
         android:paddingLeft="15dp"
-        android:text="Password"
+        android:hint="Password"
         android:textColor="@android:color/darker_gray"
         app:layout_constraintEnd_toEndOf="@+id/editTextText"
         app:layout_constraintStart_toStartOf="@+id/editTextText"
