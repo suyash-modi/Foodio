@@ -1,11 +1,13 @@
 package com.droid.foodio.Fragments
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.droid.foodio.PayOut1Activity
 import com.droid.foodio.R
 import com.droid.foodio.adapter.cartAdapter
 import com.droid.foodio.databinding.FragmentCartBinding
@@ -36,6 +38,11 @@ class CartFragment : Fragment() {
         val adapter=cartAdapter(ArrayList(foodName),ArrayList(price),ArrayList(images))
         binding.cartRV.layoutManager=LinearLayoutManager(requireContext())
         binding.cartRV.adapter=adapter
+
+        binding.buttonProceed.setOnClickListener {
+            val intent=Intent(requireContext(),PayOut1Activity::class.java)
+            startActivity(intent)
+        }
 
         return binding.root
     }

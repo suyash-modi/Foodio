@@ -35,7 +35,7 @@ class SearchFragment : Fragment() {
     ): View? {
         binding=FragmentSearchBinding.inflate(layoutInflater,container,false)
         // Inflate the layout for this fragment
-        adapter= menuAdapter(filteredValueFoodName,filteredValueFoodPrices,filteredMenuImage
+        adapter= menuAdapter(filteredValueFoodName,filteredValueFoodPrices,filteredMenuImage,requireContext()
         )
 
         binding.searchRV.layoutManager= LinearLayoutManager(requireContext())

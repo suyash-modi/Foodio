@@ -4,13 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:backgroundTint="@color/white"
+    android:background="@color/white"
     tools:context=".ChooseLocationActivity">
 
     <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="33dp"
+        android:textColor="@color/black"
         android:layout_marginTop="40dp"
         android:fontFamily="@font/yeonsungregular"
         android:text="Choose Your Location"
@@ -28,6 +29,7 @@
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
         android:background="@drawable/google_btn_shape"
+        android:textColor="@color/black"
         app:endIconDrawable="@drawable/arrow_circle_down"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -37,6 +39,7 @@
         <AutoCompleteTextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textColor="@color/black"
             android:text="Choose Location"
             android:textSize="20sp"
             android:fontFamily="@font/latoregular"
@@ -58,6 +61,7 @@
         android:layout_height="wrap_content"
         android:padding="10dp"
         android:layout_marginBottom="100dp"
+        android:textColor="@color/black"
         android:text="To provide you with the best dining experience, we need your permission to access your device's location. By enabling location services, we can offer personalized restaurant recommendations, accurate delivery estimates, and ensure a seamless food delivery experience.&quot;"
         app:layout_constraintBottom_toTopOf="@+id/Alreadybtn"
         app:layout_constraintEnd_toEndOf="parent"
@@ -66,6 +70,7 @@
     <TextView
         android:id="@+id/Alreadybtn"
         android:layout_width="wrap_content"
+
         android:layout_height="wrap_content"
         android:layout_marginBottom="50dp"
         android:fontFamily="@font/yeonsungregular"

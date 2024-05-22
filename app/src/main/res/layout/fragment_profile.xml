@@ -31,6 +31,7 @@
         <TextView
             android:id="@+id/textView20"
             android:layout_width="wrap_content"
+            android:textColor="@color/black"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:fontFamily="@font/latoextrabold"
@@ -43,6 +44,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
+            android:background="@android:color/transparent"
             android:inputType="text"
             android:text="Name"
             android:textColor="@android:color/darker_gray" />
@@ -63,6 +65,7 @@
         <TextView
             android:id="@+id/textView201"
             android:layout_width="wrap_content"
+            android:textColor="@color/black"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:fontFamily="@font/latoextrabold"
@@ -76,6 +79,7 @@
             android:layout_weight="1"
             android:ems="10"
             android:inputType="textMultiLine"
+            android:background="@android:color/transparent"
 
             android:text="Lorem ipsum is placeholder text
 commonly used in the graphic,
@@ -98,6 +102,7 @@ for previewing layouts and visua"
         <TextView
             android:id="@+id/textView202"
             android:layout_width="wrap_content"
+            android:textColor="@color/black"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:fontFamily="@font/latoextrabold"
@@ -111,6 +116,8 @@ for previewing layouts and visua"
             android:layout_weight="1"
             android:ems="10"
             android:inputType="text"
+            android:background="@android:color/transparent"
+
             android:text="Enter your Email"
             android:textColor="@android:color/darker_gray" />
     </LinearLayout>
@@ -133,6 +140,7 @@ for previewing layouts and visua"
             android:layout_weight="1"
             android:fontFamily="@font/latoextrabold"
             android:text="Phone No."
+            android:textColor="@color/black"
             android:textSize="20sp" />
 
         <EditText
@@ -143,6 +151,8 @@ for previewing layouts and visua"
             android:ems="10"
             android:inputType="text"
             android:text="Enter your Phone no."
+            android:background="@android:color/transparent"
+
             android:textColor="@android:color/darker_gray" />
     </LinearLayout>
     </LinearLayout>
