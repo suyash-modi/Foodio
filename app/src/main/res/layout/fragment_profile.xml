@@ -13,14 +13,24 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Edit Profile"
+            android:id="@+id/edtProfileBtn"
+            android:backgroundTint="@color/white"
+           android:textColor="@color/green"
+            android:layout_gravity="end"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="20dp"
+            android:textAlignment="center"/>
 
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="56dp"
         android:layout_marginLeft="16dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="20dp"
         android:layout_marginRight="16dp"
         android:background="@drawable/profileedittextshape"
         android:gravity="center"
@@ -39,15 +49,15 @@
             android:textSize="20sp" />
 
         <EditText
-            android:id="@+id/editTextText4"
+            android:id="@+id/name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:ems="10"
             android:background="@android:color/transparent"
-            android:inputType="text"
+            android:ems="10"
             android:hint="Name"
-            android:textColor="@android:color/darker_gray" />
+            android:inputType="text"
+            android:textColor="@color/black" />
     </LinearLayout>
 
     <LinearLayout
@@ -73,19 +83,16 @@
             android:textSize="20sp" />
 
         <EditText
-            android:id="@+id/editTextText41"
+            android:id="@+id/address"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
             android:inputType="textMultiLine"
             android:background="@android:color/transparent"
-
-            android:hint="Lorem ipsum is placeholder text
-commonly used in the graphic,
-print, and publishing industries
-for previewing layouts and visua"
-            android:textColor="@android:color/darker_gray" />
+            android:gravity="top"
+            android:hint="Lorem ipsum is placeholder text commonly used in the graphic,print, and publishing industries for previewing layouts and visua"
+            android:textColor="@color/black" />
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -110,16 +117,15 @@ for previewing layouts and visua"
             android:textSize="20sp" />
 
         <EditText
-            android:id="@+id/editTextText42"
+            android:id="@+id/email"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
-            android:inputType="text"
+            android:inputType="textEmailAddress"
             android:background="@android:color/transparent"
-
             android:hint="Enter your Email"
-            android:textColor="@android:color/darker_gray" />
+            android:textColor="@color/black" />
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -144,16 +150,16 @@ for previewing layouts and visua"
             android:textSize="20sp" />
 
         <EditText
-            android:id="@+id/editTextText43"
+            android:id="@+id/phoneNo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
-            android:inputType="text"
+            android:inputType="number"
             android:hint="Enter your Phone no."
             android:background="@android:color/transparent"
 
-            android:textColor="@android:color/darker_gray" />
+            android:textColor="@color/black" />
     </LinearLayout>
     </LinearLayout>
     <LinearLayout

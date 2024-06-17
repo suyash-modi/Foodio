@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-
     android:elevation="5dp"
     android:textAlignment="center"
     tools:context=".LoginActivity">
@@ -58,8 +57,10 @@
         app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
     <EditText
-        android:id="@+id/editTextText"
-        android:layout_width="325dp"
+        android:id="@+id/emaitEt"
+        android:layout_width="match_parent"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
         android:layout_height="57dp"
         android:layout_marginTop="16dp"
         android:background="@drawable/google_btn_shape"
@@ -77,8 +78,10 @@
         app:layout_constraintTop_toBottomOf="@+id/textView7" />
 
     <EditText
-        android:id="@+id/editTextText2"
-        android:layout_width="325dp"
+        android:id="@+id/passwordEt"
+        android:layout_width="match_parent"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
         android:layout_height="57dp"
         android:layout_marginTop="8dp"
         android:background="@drawable/google_btn_shape"
@@ -90,9 +93,9 @@
         android:paddingLeft="15dp"
         android:hint="Password"
         android:textColor="@android:color/darker_gray"
-        app:layout_constraintEnd_toEndOf="@+id/editTextText"
-        app:layout_constraintStart_toStartOf="@+id/editTextText"
-        app:layout_constraintTop_toBottomOf="@+id/editTextText" />
+        app:layout_constraintEnd_toEndOf="@+id/emaitEt"
+        app:layout_constraintStart_toStartOf="@+id/emaitEt"
+        app:layout_constraintTop_toBottomOf="@+id/emaitEt" />
 
     <TextView
         android:id="@+id/textView9"
@@ -101,9 +104,9 @@
         android:layout_marginTop="16dp"
         android:textColor="@color/black"
         android:text="Or"
-        app:layout_constraintEnd_toEndOf="@+id/editTextText2"
-        app:layout_constraintStart_toStartOf="@+id/editTextText2"
-        app:layout_constraintTop_toBottomOf="@+id/editTextText2" />
+        app:layout_constraintEnd_toEndOf="@+id/passwordEt"
+        app:layout_constraintStart_toStartOf="@+id/passwordEt"
+        app:layout_constraintTop_toBottomOf="@+id/passwordEt" />
 
     <TextView
         android:id="@+id/textView10"
@@ -135,7 +138,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView10" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/button2"
+        android:id="@+id/google_btn"
         android:layout_width="152dp"
         android:layout_height="57dp"
         android:layout_marginStart="32dp"
@@ -159,9 +162,9 @@
         android:fontFamily="@font/yeonsungregular"
         android:text="Login"
         android:textColor="@color/white"
-        app:layout_constraintEnd_toEndOf="@+id/button2"
+        app:layout_constraintEnd_toEndOf="@+id/google_btn"
         app:layout_constraintStart_toStartOf="@+id/button"
-        app:layout_constraintTop_toBottomOf="@+id/button2" />
+        app:layout_constraintTop_toBottomOf="@+id/google_btn" />
 
     <TextView
         android:id="@+id/dontbtn"

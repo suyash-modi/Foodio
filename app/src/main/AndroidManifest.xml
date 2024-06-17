@@ -13,14 +13,16 @@
         android:theme="@style/Theme.Foodio"
         tools:targetApi="31">
         <activity
+            android:name=".RecentBuyActivity"
+            android:exported="false" />
+        <activity
             android:name=".detailsActivity"
             android:exported="false" />
         <activity
             android:name=".PayOut1Activity"
-            android:exported="false" />
-        <activity
-            android:name=".PayOutActivity"
-            android:exported="false" />
+            android:exported="false" /> <!-- <activity -->
+        <!-- android:name=".PayOutActivity" -->
+        <!-- android:exported="false" /> -->
         <activity
             android:name=".ChooseLocationActivity"
             android:exported="false" />

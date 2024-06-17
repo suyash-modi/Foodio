@@ -10,9 +10,10 @@
     tools:context=".PayOut1Activity">
     <ImageView
         android:id="@+id/BackButton"
+
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="40dp"
         android:layout_marginLeft="20dp"
         android:src="@drawable/arrow_circle_left"/>
     <TextView
@@ -62,10 +63,9 @@
                 android:layout_weight="1"
                 android:ems="10"
                 android:background="@android:color/transparent"
-
                 android:inputType="text"
                 android:hint="Name"
-                android:textColor="@android:color/darker_gray" />
+                android:textColor="@color/black" />
         </LinearLayout>
 
         <LinearLayout
@@ -98,12 +98,9 @@
                 android:ems="10"
                 android:inputType="textMultiLine"
                 android:background="@android:color/transparent"
-
-                android:hint="Lorem ipsum is placeholder text
-commonly used in the graphic,
-print, and publishing industries
-for previewing layouts and visua"
-                android:textColor="@android:color/darker_gray" />
+                android:gravity="top"
+                android:hint="Lorem ipsum is placeholder text commonly used in the graphic,print,and publishing industries for previewing layouts and visua"
+                android:textColor="@color/black" />
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -132,6 +129,37 @@ for previewing layouts and visua"
                 android:layout_height="wrap_content"
                 android:src="@drawable/cashondelivery"/>
         </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginRight="16dp"
+            android:background="@drawable/profileedittextshape"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/latoextrabold"
+                android:textColor="@color/black"
+                android:text="Total Amount"
+                android:textSize="20sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/price"
+                android:textSize="20sp"
+                android:text="$ 1200"
+                android:fontFamily="@font/yeonsungregular"
+                android:textColor="@color/green"/>
+        </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="56dp"
@@ -151,17 +179,19 @@ for previewing layouts and visua"
                 android:layout_weight="1"
                 android:fontFamily="@font/latoextrabold"
                 android:textColor="@color/black"
-                android:text="Total Amount"
+                android:text="Phone No."
                 android:textSize="20sp" />
 
-            <TextView
+            <EditText
+                android:id="@+id/phoneNo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/totalPrice"
-                android:textSize="20sp"
-                android:text="$ 1200"
-                android:fontFamily="@font/yeonsungregular"
-                android:textColor="@color/green"/>
+                android:layout_weight="1"
+                android:ems="10"
+                android:background="@android:color/transparent"
+                android:inputType="text"
+                android:hint="pnone no."
+                android:textColor="@color/black" />
         </LinearLayout>
     </LinearLayout>
 

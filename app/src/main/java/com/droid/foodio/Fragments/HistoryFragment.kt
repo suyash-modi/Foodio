@@ -1,21 +1,35 @@
 package com.droid.foodio.Fragments
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.droid.foodio.R
+import com.bumptech.glide.Glide
+import com.droid.foodio.RecentBuyActivity
 import com.droid.foodio.adapter.buyAgainAdapter
 import com.droid.foodio.databinding.FragmentHistoryBinding
+import com.droid.foodio.utils.OrderDetails
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 
 class HistoryFragment : Fragment() {
-    private lateinit var binding:FragmentHistoryBinding
-    private lateinit var BuyAgainAdapter:buyAgainAdapter
+    private lateinit var binding: FragmentHistoryBinding
+    private lateinit var buyAgainAdapter: buyAgainAdapter
+    private lateinit var auth: FirebaseAuth
+    private lateinit var userId: String
+    private lateinit var database: FirebaseDatabase
+    private var listOrderItem: MutableList<OrderDetails> = mutableListOf()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
     }
 
     override fun onCreateView(
@@ -23,27 +37,90 @@ class HistoryFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        binding=FragmentHistoryBinding.inflate(layoutInflater,container,false)
+        binding = FragmentHistoryBinding.inflate(layoutInflater, container, false)
+        auth = FirebaseAuth.getInstance()
+        database = FirebaseDatabase.getInstance()
 
-        setupRecyclerView()
+        //get data from firebase
+        retrieveOrderItems()
+
+        binding.recentBuyCL.setOnClickListener {
+            seeItemsRecentBuy()
+        }
 
         return binding.root
     }
-    private fun setupRecyclerView()
-    {
-        val foodName= listOf("Burger","Sandwich","Momos","Garlic Bread","cheesy dip")
-        val price= listOf("$7","$12","$17","$23","$3")
-        val images= listOf(
-            R.drawable.menuphoto,
-            R.drawable.photomenu,
-            R.drawable.menuphoto,
-            R.drawable.photomenu,
-            R.drawable.menuphoto)
 
-        val adapter= buyAgainAdapter(ArrayList(foodName),ArrayList(price),ArrayList(images))
-        binding.historyRV.layoutManager= LinearLayoutManager(requireContext())
-        binding.historyRV.adapter=adapter
-
+    private fun seeItemsRecentBuy() {
+        val recentBuy = listOrderItem.firstOrNull()
+        recentBuy?.let {
+            val intent = Intent(requireContext(), RecentBuyActivity::class.java)
+            intent.putExtra("recentBuy", it)
+            startActivity(intent)
+        }
     }
 
+    private fun retrieveOrderItems() {
+        binding.recentBuyCL.visibility = View.INVISIBLE
+        userId = auth.currentUser?.uid ?: ""
+        database = FirebaseDatabase.getInstance()
+
+        val ref: DatabaseReference = database.reference.child("User").child(userId).child("BuyHistory")
+        val shortingQuery = ref.orderByChild("currentTime")
+        shortingQuery.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                for (buySnapshot in snapshot.children) {
+                    val buyHistoryItem = buySnapshot.getValue(OrderDetails::class.java)
+                    buyHistoryItem?.let {
+                        listOrderItem.add(it)
+                    }
+                }
+                listOrderItem.reverse()
+                if (listOrderItem.isNotEmpty()) {
+                    setDataInRecentBuyItem()
+                    setPreviousBuyItemRecyclerView()
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                // Handle error
+            }
+        })
+    }
+
+    private fun setDataInRecentBuyItem() {
+        binding.recentBuyCL.visibility = View.VISIBLE
+        val recentBuyItem = listOrderItem.firstOrNull()
+        recentBuyItem?.let {
+            with(binding) {
+                name.text = it.foodNames?.firstOrNull() ?: ""
+                val prices = it.foodPrices?.firstOrNull() ?: ""
+                price.text = "$ $prices"
+                val images = it.foodImages?.firstOrNull() ?: ""
+                val uri = Uri.parse(images)
+                Glide.with(requireContext()).load(uri).into(image)
+            }
+        }
+    }
+
+    private fun setPreviousBuyItemRecyclerView() {
+        val foodName = mutableListOf<String>()
+        val price = mutableListOf<String>()
+        val images = mutableListOf<String>()
+
+        for (i in 1 until listOrderItem.size) {
+            listOrderItem[i].foodNames?.firstOrNull()?.let { foodName.add(it) }
+            listOrderItem[i].foodPrices?.firstOrNull()?.let {
+                price.add(it)
+                listOrderItem[i].foodImages?.firstOrNull()?.let {
+                    images.add(it)
+                }
+            }
+        }
+
+        val rv = binding.historyRV
+        rv.layoutManager = LinearLayoutManager(requireContext())
+        buyAgainAdapter = buyAgainAdapter(foodName, price, images, requireContext())
+        rv.adapter = buyAgainAdapter
+    }
 }
