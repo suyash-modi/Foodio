@@ -64,7 +64,7 @@ class ProfileFragment : Fragment() {
         val userId = auth.currentUser?.uid
         if (userId != null) {
             val userRef = database.getReference("User").child(userId)
-            val userData = hashMapOf("name" to name , "email" to email , "address" to address , "phoneNo" to phoneNo)
+            val userData = hashMapOf("name" to name , "email" to email , "address" to address , "phone" to phoneNo)
 
             userRef.setValue(userData).addOnSuccessListener {
                 binding.name.isEnabled=false

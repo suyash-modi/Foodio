@@ -48,7 +48,17 @@ class HistoryFragment : Fragment() {
             seeItemsRecentBuy()
         }
 
+        binding.acceptButton.setOnClickListener {
+            updateOrderStatus()
+        }
+
         return binding.root
+    }
+
+    private fun updateOrderStatus() {
+        val itemPushKey = listOrderItem[0].itemPushKey
+        val completeOrderRef =database.reference.child("CompletedOrder").child(itemPushKey!!)
+        completeOrderRef.child("paymentReceived").setValue(true)
     }
 
     private fun seeItemsRecentBuy() {
@@ -99,6 +109,17 @@ class HistoryFragment : Fragment() {
                 val images = it.foodImages?.firstOrNull() ?: ""
                 val uri = Uri.parse(images)
                 Glide.with(requireContext()).load(uri).into(image)
+
+
+                val isOrderAccepted = listOrderItem[0].orderAccepted
+                if (isOrderAccepted == true) {
+//                    orderStatus.background.setTint(android.graphics.Color.GREEN)
+                    acceptButton.visibility = View.VISIBLE
+                }
+//                else {
+//                    acceptButton.visibility = View.VISIBLE
+//                    orderStatus.background.setTint(android.graphics.Color.RED)
+//                }
             }
         }
     }
