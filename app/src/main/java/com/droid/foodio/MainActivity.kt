@@ -1,5 +1,6 @@
 package com.droid.foodio
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
@@ -16,10 +17,16 @@ class MainActivity : AppCompatActivity() {
         var navcontroller = findNavController(R.id.fragmentContainerView)
         var bottomnav = findViewById<BottomNavigationView>(R.id.bottomNavigationView)
         bottomnav.setupWithNavController(navcontroller)
+
         binding.notificationBtn.setOnClickListener {
             val bottomSheetDialog=notificationBottomFragment()
             bottomSheetDialog.show(supportFragmentManager,"Test")
 
+        }
+
+        binding.geminiView.setOnClickListener {
+            intent= Intent(this, GeminiActivity::class.java)
+            startActivity(intent)
         }
     }
 }

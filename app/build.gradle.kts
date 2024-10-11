@@ -58,4 +58,5 @@ dependencies {
     implementation ("com.github.denzcoskun:ImageSlideshow:0.1.2")
     implementation("com.google.android.gms:play-services-auth:21.0.0")
     implementation ("com.github.bumptech.glide:glide:4.16.0")
+    implementation("com.google.ai.client.generativeai:generativeai:0.7.0")
 }
