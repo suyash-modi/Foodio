@@ -13,11 +13,11 @@
         <TextView
             android:id="@+id/headingTextView"
             android:layout_width="wrap_content"
-            android:layout_marginTop="25dp"
+            android:layout_marginTop="30dp"
             android:layout_height="wrap_content"
             android:layout_gravity="start"
             android:gravity="center"
-            android:text="Recipe Generator"
+            android:text="Cook Helper"
             android:textColor="#000"
             android:textSize="24sp"
             android:textStyle="bold"
@@ -85,7 +85,9 @@
                     android:gravity="center"
                     android:padding="16dp"
                     android:scrollbars="vertical"
-                    android:text="Your recipes will appear here..."
+                    android:text="Get recipe ideas based on
+an image of ingredients
+you have on hand.\n\nYour recipes will appear here..."
                     android:textColor="#333"
                     android:textSize="16sp" />
 
