@@ -158,29 +158,27 @@
             android:inputType="number"
             android:hint="Enter your Phone no."
             android:background="@android:color/transparent"
-
             android:textColor="@color/black" />
-    </LinearLayout>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="180dp"
-        >
 
+
+    </LinearLayout>
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/button4"
+            android:id="@+id/saveBtn"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_marginStart="24dp"
+            android:layout_marginTop="32dp"
             android:layout_marginEnd="24dp"
             android:layout_marginBottom="32dp"
             android:background="@drawable/google_btn_shape"
             android:fontFamily="@font/yeonsungregular"
             android:text="Save Information"
             android:textColor="@color/green" />
-
     </LinearLayout>
+
+
+
+
 
 
 

@@ -1,6 +1,7 @@
 package com.droid.foodio.Fragments
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -47,7 +48,7 @@ class ProfileFragment : Fragment() {
         }
 
         //update user data
-        binding.button4.setOnClickListener{
+        binding.saveBtn.setOnClickListener{
             val name = binding.name.text.toString()
             val email = binding.email.text.toString()
             val address = binding.address.text.toString()
@@ -76,6 +77,7 @@ class ProfileFragment : Fragment() {
             Toast.makeText(requireContext(),"Failed to Update Profile", Toast.LENGTH_SHORT).show()
             }
         }
+        setUserData()
     }
 
     private fun setUserData() {
@@ -88,21 +90,18 @@ class ProfileFragment : Fragment() {
             userRef.addListenerForSingleValueEvent(object : ValueEventListener
             {
                 override fun onDataChange(snapshot: DataSnapshot) {
-                    if (snapshot.exists())
-                    {
-                       val userProfile=snapshot.getValue(userModel::class.java)
-                        if(userProfile!=null)
-                        {
+                    if (snapshot.exists()) {
+                        val userProfile = snapshot.getValue(userModel::class.java)
+                        if (userProfile != null) {
+                            Log.d("UserProfile", "Phone Number: ${userProfile.phone}") // Log the phone number
                             binding.name.setText(userProfile.name)
                             binding.email.setText(userProfile.email)
-                            binding.phoneNo.setText(userProfile.phoneNo)
+                            binding.phoneNo.setText(userProfile.phone) // Check if it's null
                             binding.address.setText(userProfile.address)
-
-
                         }
                     }
-
                 }
+
 
                 override fun onCancelled(error: DatabaseError) {
 
