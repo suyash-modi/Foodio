@@ -52,7 +52,7 @@ class GeminiActivity : AppCompatActivity() {
     private fun setupGenerativeModel() {
         generativeModel = GenerativeModel(
             modelName = "gemini-1.5-pro-latest",
-            apiKey = "AIzaSyAXMMfxPjR9Vnfv3Ue2ESNrzjBuGK4wtw0"
+            apiKey = "Your_Api_Key"
         )
     }
 
