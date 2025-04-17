@@ -124,10 +124,14 @@
                 android:text="Payment Method"
                 android:textSize="20sp" />
 
-            <ImageView
+            <TextView
+                android:id="@+id/textView2021"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/cashondelivery"/>
+                android:textColor="@color/green"
+                android:fontFamily="@font/yeonsungregular"
+                android:text="Pay Online"
+                android:textSize="20sp" />
         </LinearLayout>
 
         <LinearLayout

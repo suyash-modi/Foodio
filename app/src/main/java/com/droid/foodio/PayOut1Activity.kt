@@ -12,8 +12,10 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import com.razorpay.PaymentResultListener
+import kotlin.math.roundToInt
 
-class PayOut1Activity : AppCompatActivity() {
+class PayOut1Activity : AppCompatActivity(), PaymentResultListener {
     lateinit var binding: ActivityPayOut1Binding
     private lateinit var auth: FirebaseAuth
     private lateinit var databaseReference: DatabaseReference
@@ -66,7 +68,8 @@ class PayOut1Activity : AppCompatActivity() {
 
             }
             else{
-                placeOrder()
+                val amount = totalAmount.replace("$", "").trim().toFloatOrNull() ?: 0f
+                savePayments(amount)
             }
 
         }
@@ -75,6 +78,7 @@ class PayOut1Activity : AppCompatActivity() {
             finish()
         }
     }
+
 
     private fun placeOrder() {
         userId=auth.currentUser?.uid?:""
@@ -152,4 +156,42 @@ class PayOut1Activity : AppCompatActivity() {
             })
         }
     }
+
+    // Stub for savePayments function (you should implement Razorpay payment integration here)
+    private fun savePayments(amount: Float) {
+        val checkout = com.razorpay.Checkout()
+        checkout.setKeyID("rzp_live_7rk7sJYf7JnVOk") // Use test key while testing
+
+        try {
+            val amountValue = (amount * 100).roundToInt() // Razorpay needs amount in paise
+            val options = org.json.JSONObject()
+            options.put("name", "Foodio Order")
+            options.put("description", "Delicious food at your doorstep")
+            options.put("theme.color", "#1F4FE0")
+            options.put("currency", "INR")
+            options.put("amount", amountValue)
+
+            val prefill = org.json.JSONObject()
+            prefill.put("email", auth.currentUser?.email ?: "test@foodio.com")
+            prefill.put("contact", phoneNo.ifEmpty { "9999999999" })
+            options.put("prefill", prefill)
+
+            com.razorpay.Checkout.preload(applicationContext)
+            checkout.open(this, options)
+        } catch (e: Exception) {
+            Toast.makeText(this, "Payment Error: ${e.message}", Toast.LENGTH_LONG).show()
+        }
+    }
+
+    // Razorpay Payment Callbacks
+    override fun onPaymentSuccess(razorpayPaymentID: String?) {
+        Toast.makeText(this, "Payment Successful: $razorpayPaymentID", Toast.LENGTH_SHORT).show()
+        placeOrder()
+    }
+
+    override fun onPaymentError(code: Int, response: String?) {
+        Toast.makeText(this, "Payment Failed: $response", Toast.LENGTH_SHORT).show()
+    }
+
 }
+
